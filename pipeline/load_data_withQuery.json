@@ -1,0 +1,56 @@
+{
+	"name": "load_data_withQuery",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data_query",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select PasswordHash,PasswordSalt,B.rowguid from Person_Password P inner join Person_BusinessEntity B on P.BusinessEntityID= B.BusinessEntityID \n\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureSqlTable36",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Json2",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Adventure_works"
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-10-22T08:11:20Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,15 @@
+{
+	"name": "df-saranya-dev",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8e29a812-ae6d-494f-87a1-158245b88b34",
+		"tenantId": "72ce91c4-eda4-4a8b-bbe4-503a18ac4aaf"
+	}
+}
