@@ -1,0 +1,15 @@
+{
+	"name": "letsrock-adf",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8b9365df-b4b3-4ebd-a17f-15319720a514",
+		"tenantId": "33e3b308-1ae6-464c-b593-5c084367ce48"
+	}
+}
