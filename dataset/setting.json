@@ -8,13 +8,19 @@
 		"parameters": {
 			"tablename": {
 				"type": "string"
+			},
+			"foldername": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "dbo",
+			"schema": {
+				"value": "@dataset().foldername",
+				"type": "Expression"
+			},
 			"table": {
 				"value": "@dataset().tablename",
 				"type": "Expression"

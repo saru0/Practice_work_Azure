@@ -116,6 +116,10 @@
 													"tablename": {
 														"value": "item().name",
 														"type": "Expression"
+													},
+													"foldername": {
+														"value": "@activity('Get tables').output",
+														"type": "Expression"
 													}
 												}
 											}
