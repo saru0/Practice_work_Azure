@@ -1,0 +1,24 @@
+{
+	"name": "sales_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_sqlAzure",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "sales",
+			"table": {
+				"value": "@dataset().tablename",
+				"type": "Expression"
+			}
+		}
+	}
+}

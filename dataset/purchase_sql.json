@@ -1,0 +1,24 @@
+{
+	"name": "purchase_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_sqlAzure",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "purchase",
+			"table": {
+				"value": "@replace(dataset().tablename, '.csv', '')",
+				"type": "Expression"
+			}
+		}
+	}
+}
