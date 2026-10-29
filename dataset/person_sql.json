@@ -1,0 +1,24 @@
+{
+	"name": "person_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_sqlAzure",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "person",
+			"table": {
+				"value": "@dataset().tablename",
+				"type": "Expression"
+			}
+		}
+	}
+}

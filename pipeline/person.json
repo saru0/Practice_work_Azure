@@ -15,7 +15,20 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"fieldList": []
+					"dataset": {
+						"referenceName": "person",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
 				}
 			},
 			{
@@ -54,7 +67,7 @@
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
 										"recursive": true,
-										"wildcardFolderPath": "production",
+										"wildcardFolderPath": "person",
 										"wildcardFileName": {
 											"value": "@item().name",
 											"type": "Expression"
@@ -84,13 +97,13 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "production",
+									"referenceName": "person",
 									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "AzureSqlTable3",
+									"referenceName": "person_sql",
 									"type": "DatasetReference",
 									"parameters": {
 										"tablename": {
