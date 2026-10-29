@@ -1,0 +1,12 @@
+{
+	"name": "SAMP",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_sqlAzure",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
