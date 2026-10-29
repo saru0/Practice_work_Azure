@@ -1,0 +1,75 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "letsrock-adf"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase2_password": {
+			"value": ""
+		},
+		"LS_gen2_accountKey": {
+			"value": ""
+		},
+		"LS_sqlAzure_password": {
+			"value": ""
+		},
+		"LS_sqlserver_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://datalakekamala.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://datalakekamala.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "sleepy.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "everything"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "jaibalaiah"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_server": {
+			"value": "sleepy.database.windows.net"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_database": {
+			"value": "everything"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_userName": {
+			"value": "jaibalaiah"
+		},
+		"LS_gen2_properties_typeProperties_url": {
+			"value": "https://datalakekamala.dfs.core.windows.net/"
+		},
+		"LS_sqlAzure_properties_typeProperties_server": {
+			"value": "sleepy.database.windows.net"
+		},
+		"LS_sqlAzure_properties_typeProperties_database": {
+			"value": "everything"
+		},
+		"LS_sqlAzure_properties_typeProperties_userName": {
+			"value": "jaibalaiah"
+		},
+		"LS_sqlserver_properties_typeProperties_server": {
+			"value": "sleepy"
+		},
+		"LS_sqlserver_properties_typeProperties_database": {
+			"value": "everything"
+		},
+		"LS_sqlserver_properties_typeProperties_userName": {
+			"value": "jaibalaiah"
+		}
+	}
+}
