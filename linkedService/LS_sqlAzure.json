@@ -1,0 +1,17 @@
+{
+	"name": "LS_sqlAzure",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "sleepy.database.windows.net",
+			"database": "everything",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "jaibalaiah",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDNBNTY3QzgxLUUyREItNDBEOC05MUE3LUM2MjQzQjQ4NkYxOV8zZTg2YjI5Zi05NGI2LTQxZGEtOTY4NS1lYjk1NDJjNzM2YmUiDQp9"
+		}
+	}
+}
