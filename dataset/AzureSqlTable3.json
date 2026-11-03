@@ -14,7 +14,7 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "everything.production",
+			"schema": "newproduction",
 			"table": {
 				"value": "@dataset().tablename",
 				"type": "Expression"

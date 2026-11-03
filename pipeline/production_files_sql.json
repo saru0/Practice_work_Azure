@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "production",
+						"referenceName": "cshjdbc",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -24,7 +24,6 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
-						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -98,7 +97,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "production",
+									"referenceName": "cshjdbc",
 									"type": "DatasetReference"
 								}
 							],
