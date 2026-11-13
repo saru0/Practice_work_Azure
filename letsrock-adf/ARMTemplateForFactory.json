@@ -556,7 +556,7 @@
 							},
 							"activities": [
 								{
-									"name": "getname",
+									"name": "LOAD_DATA",
 									"type": "Copy",
 									"dependsOn": [],
 									"policy": {
@@ -620,6 +620,65 @@
 											}
 										}
 									]
+								},
+								{
+									"name": "Copy data1",
+									"type": "Copy",
+									"dependsOn": [
+										{
+											"activity": "LOAD_DATA",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "AzureSqlSource",
+											"sqlReaderQuery": {
+												"value": "SELECT '@{pipeline().DataFactory}' as DataFactory_Name,\n'@{pipeline().Pipeline}' as Pipeline_Name,\n'@{pipeline().RunId}' as RunId,\n'@{item().name}' as Source,\n\n'@{pipeline().TriggerType}' as TriggerType,\n'@{pipeline().TriggerId}' as TriggerId,\n'@{pipeline().TriggerName}' as TriggerName,\n'@{pipeline().TriggerTime}' as TriggerTime,\n'@{activity('load_data').output.rowsCopied}' as rowsCopied,\n'@{activity('load_data').output.rowsRead}' as RowsRead,\n'@{activity('load_data').output.usedParallelCopies}' as No_ParallelCopies,\n'@{activity('load_data').output.copyDuration}' as copyDuration_in_secs,\n'@{activity('load_data').output.effectiveIntegrationRuntime}' as effectiveIntegrationRuntime,\n'@{activity('load_data').output.executionDetails[0].source.type}' as Source_Type,\n'@{activity('load_data').output.executionDetails[0].sink.type}' as Sink_Type,\n'@{activity('load_data').output.executionDetails[0].status}' as Execution_Status,\n'@{activity('load_data').output.executionDetails[0].start}' as CopyActivity_Start_Time,\n'@{utcnow()}' as CopyActivity_End_Time,\n'@{activity('load_data').output.executionDetails[0].detailedDurations.queuingDuration}' as CopyActivity_queuingDuration_in_secs,\n'@{activity('load_data').output.executionDetails[0].detailedDurations.transferDuration}' as CopyActivity_transferDuration_in_secs",
+												"type": "Expression"
+											},
+											"queryTimeout": "02:00:00",
+											"partitionOption": "None"
+										},
+										"sink": {
+											"type": "AzureSqlSink",
+											"writeBehavior": "insert",
+											"sqlWriterUseTableLock": false
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "AzureSqlTable5",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "AzureSqlTable6",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									]
 								}
 							]
 						}
@@ -632,7 +691,9 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/cshjdbc')]",
-				"[concat(variables('factoryId'), '/datasets/AzureSqlTable3')]"
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable3')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable5')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable6')]"
 			]
 		},
 		{
@@ -1207,6 +1268,140 @@
 						"value": "@dataset().tablename",
 						"type": "Expression"
 					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_sqlAzure')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlTable5')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_sqlAzure",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_sqlAzure')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlTable6')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_sqlAzure",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "DataFactory_Name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Pipeline_Name",
+						"type": "nvarchar"
+					},
+					{
+						"name": "RunId",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Source",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Destination",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TriggerType",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TriggerId",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TriggerName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TriggerTime",
+						"type": "nvarchar"
+					},
+					{
+						"name": "rowsCopied",
+						"type": "nvarchar"
+					},
+					{
+						"name": "RowsRead",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "No_ParallelCopies",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "copyDuration_in_secs",
+						"type": "nvarchar"
+					},
+					{
+						"name": "effectiveIntegrationRuntime",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Source_Type",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Sink_Type",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Execution_Status",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CopyActivity_Start_Time",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "CopyActivity_End_Time",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "CopyActivity_queuingDuration_in_secs",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CopyActivity_timeToFirstByte_in_secs",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CopyActivity_transferDuration_in_secs",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "pipeline_log"
 				}
 			},
 			"dependsOn": [
