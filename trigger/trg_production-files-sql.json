@@ -6,7 +6,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "production_files_sql",
+					"referenceName": "AUDIT-LOGS",
 					"type": "PipelineReference"
 				}
 			}
