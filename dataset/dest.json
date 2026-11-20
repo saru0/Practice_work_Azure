@@ -1,0 +1,24 @@
+{
+	"name": "dest",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_sqldatabase",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "production",
+			"table": {
+				"value": "@dataset().tablename",
+				"type": "Expression"
+			}
+		}
+	}
+}
