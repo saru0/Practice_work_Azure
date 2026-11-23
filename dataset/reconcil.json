@@ -1,0 +1,35 @@
+{
+	"name": "reconcil",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_sqldatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Filenamee",
+				"type": "nvarchar"
+			},
+			{
+				"name": "filecount",
+				"type": "nvarchar"
+			},
+			{
+				"name": "number_of_rows",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "numbeer_of_columns",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "reconcil"
+		}
+	}
+}

@@ -117,6 +117,8 @@
 						{
 							"name": "Copy data1",
 							"type": "Copy",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "lets move_copy1",
@@ -183,6 +185,42 @@
 									"type": "DatasetReference"
 								}
 							]
+						},
+						{
+							"name": "Script1_copy2",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "lets move_copy1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "LS_sqldatabase",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "NonQuery",
+										"text": {
+											"value": "INSERT INTO dbo.reconcil\n(\n    Filenamee,\n    filecount,\n    number_of_rows,\n    numbeer_of_columns\n)\nVALUES\n(\n    '@{item().name}',\n    '@{activity('lets move_copy1').output.filesRead}',\n   '@{activity('lets move_copy1').output.rowsRead}',\n    NULL\n);\n",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
 						}
 					]
 				}
