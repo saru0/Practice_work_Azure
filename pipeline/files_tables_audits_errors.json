@@ -219,16 +219,6 @@
 								],
 								"scriptBlockExecutionTimeout": "02:00:00"
 							}
-						},
-						{
-							"name": "Validation1",
-							"type": "Validation",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"timeout": "0.12:00:00",
-								"sleep": 10
-							}
 						}
 					]
 				}
