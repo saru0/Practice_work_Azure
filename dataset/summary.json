@@ -1,0 +1,37 @@
+{
+	"name": "summary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_gen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Person_Summary.csv",
+				"folderPath": "person",
+				"fileSystem": "outgoing"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "filename",
+				"type": "String"
+			},
+			{
+				"name": "loaddate",
+				"type": "String"
+			},
+			{
+				"name": "sourcecount",
+				"type": "String"
+			}
+		]
+	}
+}
